@@ -1,21 +1,28 @@
-// ============================================
-// MindNote 设计系统变量
-// ============================================
+# 设计系统（Design Tokens）
 
-// 字号（使用 rpx 单位，适配不同设备）
+## 字号变量
+
+使用 rpx 单位（750rpx = 屏幕宽度），适配不同设备。
+
+```scss
 :root {
-  --fs-xxs: 18rpx;
-  --fs-xs: 22rpx;
-  --fs-sm: 24rpx;
-  --fs-base: 28rpx;
-  --fs-lg: 32rpx;
-  --fs-xl: 36rpx;
-  --fs-xxl: 40rpx;
-  --fs-display: 48rpx;
-  --fs-hero: 64rpx;
+  --fs-xxs: 18rpx;    // 最小标签
+  --fs-xs: 22rpx;     // 辅助文字
+  --fs-sm: 24rpx;     // 小字
+  --fs-base: 28rpx;   // 通用正文
+  --fs-lg: 32rpx;     // 大字
+  --fs-xl: 36rpx;     // 标题
+  --fs-xxl: 40rpx;    // 大标题
+  --fs-display: 48rpx; // 展示用
+  --fs-hero: 64rpx;    // 超大标题
 }
+```
 
-// 浅色模式颜色
+## 颜色变量
+
+### 浅色模式
+
+```scss
 :root {
   // 主色
   --color-primary: #D99A28;
@@ -54,8 +61,11 @@
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
+```
 
-// 深色模式颜色
+### 深色模式
+
+```scss
 .theme-dark {
   // 主色
   --color-primary: #9273E6;
@@ -93,21 +103,55 @@
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.25);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
+```
 
-// SCSS 变量（用于 SCSS 文件中）
-$font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+## 间距变量
 
-// 间距
+```scss
 $spacing-xs: 4px;
 $spacing-sm: 8px;
 $spacing-md: 16px;
 $spacing-lg: 24px;
 $spacing-xl: 32px;
 $spacing-2xl: 48px;
+```
 
-// 圆角
+## 圆角变量
+
+```scss
 $radius-sm: 8px;
 $radius-md: 16px;
 $radius-lg: 24px;
 $radius-xl: 32px;
 $radius-full: 9999px;
+```
+
+## 字体栈
+
+```scss
+$font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+```
+
+## 使用示例
+
+```scss
+.thought-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  padding: $spacing-xl;
+  box-shadow: var(--shadow-md);
+  
+  &__title {
+    font-size: var(--fs-xl);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+  
+  &__content {
+    font-size: var(--fs-base);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+}
+```

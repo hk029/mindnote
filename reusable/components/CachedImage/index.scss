@@ -1,0 +1,38 @@
+.cached-image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  &__placeholder {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+  }
+
+  &--loading {
+    .cached-image__placeholder {
+      opacity: 1;
+    }
+    .cached-image__img {
+      opacity: 0;
+    }
+  }
+
+  &--loaded {
+    .cached-image__placeholder {
+      opacity: 0;
+    }
+    .cached-image__img {
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+  }
+}
